@@ -5,7 +5,12 @@ import gspread
 from selenium.webdriver.common.keys import Keys
 import time
 from test import get_list
+from selenium.webdriver.support.ui import Select
 
+
+# Choosing which center does the user want
+
+center = get_list()
 # opening the cowin homepage
 
 driver=webdriver.Chrome()
@@ -28,7 +33,17 @@ otp=l[:-1]
 
 driver.find_element_by_xpath('//*[@id="mat-input-1"]').send_keys(otp)
 driver.find_element_by_xpath('//*[@id="main-content"]/app-login/ion-content/div/ion-grid/ion-row/ion-col/ion-grid/ion-row/ion-col/ion-grid/form/ion-row/ion-col[3]/div/ion-button').click()
-center = get_list()
-driver.find_element_by_xpath('//*[@id="main-content"]/app-beneficiary-dashboard/ion-content/div/div/ion-grid/ion-row/ion-col/ion-grid[1]/ion-row[2]/ion-col/ion-grid/ion-row[5]/ion-col[2]/ul/li/a').click()
 time.sleep(5)
 
+# selecting the slots
+driver.find_element_by_xpath('//*[@id="main-content"]/app-beneficiary-dashboard/ion-content/div/div/ion-grid/ion-row/ion-col/ion-grid[1]/ion-row[2]/ion-col/ion-grid/ion-row[5]/ion-col[2]/ul/li/a/span').click()
+time.sleep(5)
+driver.find_element_by_xpath('//*[@id="main-content"]/app-appointment-table/ion-content/div/div/ion-grid/ion-row/ion-grid/ion-row/ion-col/ion-grid/ion-row/ion-col[2]/form/ion-grid[1]/ion-row/ion-col[2]/div/label/button').click()
+time.sleep(5)
+
+
+driver.find_element_by_xpath('//*[@id="mat-select-value-5"]').click()
+driver.find_element_by_xpath('//*[@id="mat-option-61"]/span').click()
+
+driver.find_element_by_xpath('//*[@id="mat-select-value-3"]/span').click()
+driver.find_element_by_xpath('//*[@id="mat-option-68"]/span').click()
